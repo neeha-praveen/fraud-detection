@@ -12,12 +12,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import f1_score, accuracy_score, classification_report
 from art.estimators.classification import PyTorchClassifier, SklearnClassifier
 from art.attacks.evasion import FastGradientMethod, ProjectedGradientDescent
-
+import kagglehub
+import os
 # ─────────────────────────────────────────────
 # 1. LOAD DATA
 # ─────────────────────────────────────────────
 
-df = pd.read_csv("final_fraud_dataset.csv")  # update path if needed
+path = kagglehub.dataset_download("neeraja3/fraud-detection-preprocessed-dataset-ieee-cis")
+df = pd.read_csv(os.path.join(path, "final_fraud_dataset.csv"))  # update path if needed
 
 X = df.drop(columns=["isFraud"])
 y = df["isFraud"].values

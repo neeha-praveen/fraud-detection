@@ -9,12 +9,15 @@ import random
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_score
+import kagglehub
+import os
 
 # ─────────────────────────────────────────────
 # 1. LOAD DATA (same setup as week 6)
 # ─────────────────────────────────────────────
 
-df = pd.read_csv("final_fraud_dataset.csv")
+path = kagglehub.dataset_download("neeraja3/fraud-detection-preprocessed-dataset-ieee-cis")
+df = pd.read_csv(os.path.join(path, "final_fraud_dataset.csv"))
 
 X = df.drop(columns=["isFraud"])
 y = df["isFraud"].values

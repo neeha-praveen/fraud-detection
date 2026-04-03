@@ -5,9 +5,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from art.estimators.classification import XGBoostClassifier
+import kagglehub
+import os
 
 # ── Load data ──
-df = pd.read_csv("final_fraud_dataset.csv")
+path = kagglehub.dataset_download("neeraja3/fraud-detection-preprocessed-dataset-ieee-cis")
+df = pd.read_csv(os.path.join(path, "final_fraud_dataset.csv"))
 X = df.drop(columns=["isFraud"])
 y = df["isFraud"].values
 

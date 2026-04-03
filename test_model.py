@@ -1,10 +1,13 @@
 import joblib
 import pandas as pd
+import kagglehub
+import os
 
 model = joblib.load("final_model.pkl")
 
 # Example: load one row
-df = pd.read_csv("final_fraud_dataset.csv").iloc[:1]
+path = kagglehub.dataset_download("neeraja3/fraud-detection-preprocessed-dataset-ieee-cis")
+df = pd.read_csv(os.path.join(path, "final_fraud_dataset.csv")).iloc[:1]
 df = df.fillna(0)
 
 X = df.drop(columns=["isFraud"])

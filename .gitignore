@@ -1,1 +1,45 @@
-final_fraud_dataset.csv
+# 🔹 Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 🔹 Virtual environment
+venv/
+.env/
+.env.*
+
+# 🔹 Jupyter Notebook checkpoints (if you ever use them)
+.ipynb_checkpoints/
+
+# 🔹 Model files (large / generated)
+*.joblib
+
+# 🔹 Numpy / data artifacts
+*.csv
+
+# 🔹 Logs
+*.log
+
+# 🔹 OS files
+.DS_Store
+Thumbs.db
+
+# 🔹 VS Code settings (optional)
+.vscode/
+
+# 🔹 Temporary files
+*.tmp
+*.temp
+
+# 🔹 Build / dist (if any)
+build/
+dist/
+*.egg-info/
+
+# 🔹 Secrets / configs
+config.json
+*.env
+
+# 🔹 Test outputs / experiment results
+*_results.csv

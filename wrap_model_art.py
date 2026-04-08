@@ -39,3 +39,21 @@ preds = classifier.predict(X_sample)
 print("Model loaded and wrapped successfully!")
 print(f"Sample predictions : {np.argmax(preds, axis=1)}")
 print(f"Actual labels      : {y_test[:5]}")
+def compute_rrs(model, X, y):
+    """
+    Simple Robustness Risk Score (RRS)
+    Lower FNR = better robustness
+    """
+
+    from sklearn.metrics import confusion_matrix
+
+    y_pred = model.predict(X)
+
+    tn, fp, fn, tp = confusion_matrix(y, y_pred).ravel()
+
+    fnr = fn / (fn + tp)
+
+    # Convert to robustness score (higher is better)
+    rrs = 1 - fnr
+
+    return rrs
